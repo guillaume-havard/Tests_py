@@ -71,15 +71,25 @@ def parse_time(time) :
     600
     >>> parse_time(10)
     10
+    >>> parse_time(-10)
+    0
+    >>> parse_time(None)
+    0
     
     TODO : voir pour retourner une erreur si la valeur en entrée n'est pas 
-    bonne
+    bonne (et enlever les cas < 0)
     
     """
     ret = 0
     
+    if not time:
+        return 0
+    
     if isinstance( time, int ):
-        return time
+        if time >= 0:
+            return time
+        else :
+            return 0
         
     if time.isdigit():
         ret = int(time)
@@ -90,9 +100,12 @@ def parse_time(time) :
     
     return ret
     
-if arguments["<time1>"]:
-    print("coucou")
+# Lecture des arguments 
+time1 = parse_time(arguments["<time1>"])
+time2 = parse_time(arguments["<time2>"])
+time_total = parse_time(arguments["<time_total>"])
 
+print("temps pour le timer", time1, time2, time_total)
 
 if __name__ == "__main__":
     import doctest
