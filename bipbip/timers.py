@@ -1,4 +1,7 @@
-from tkinter import *
+#!/usr/local/bin/python3
+
+# -*- coding: utf-8 -*-
+
 import time
 
 import datetime as dtime
@@ -103,25 +106,3 @@ if __name__ == "__main__":
     
     
 
-    """
-    # test du timer avec tkinter
-    debut = datetime.now()
-    print(debut)
-
-    root = Tk()
-    clock = Label(root, font=('times', 20, 'bold'), bg='green')
-    clock.pack(fill=BOTH, expand=1)
-     
-    def tick():
-        time2 = str(datetime.now() - debut)
-        
-        clock.config(text=time2)
-        
-        # calls itself every 200 milliseconds
-        # to update the time display as needed
-        # could use >200 ms, but display gets jerky
-        clock.after(50, tick)
-     
-    tick()
-    root.mainloop(  )
-    """

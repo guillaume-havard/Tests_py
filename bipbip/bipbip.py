@@ -107,7 +107,13 @@ time_total = parse_time(arguments["<time_total>"])
 
 print("temps pour le timer", time1, time2, time_total)
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+"""
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()"""
+
+import doctest
+doctest.testmod()
+    
+    
 
