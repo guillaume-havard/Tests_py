@@ -9,6 +9,11 @@ le tout sur une durrée limité.
 Par exemple une répétition de 30s, 10s, 30s, 10s ... le tout sur 10 minutes
 
 """
+ 
+from docopt import docopt
+
+import tkinter as tk
+from graphic import *
 
 help = """Le nom de mon programme trop coolbipbip
 
@@ -27,29 +32,6 @@ Options:
 Once launched you canlaunch/pause the timer with 'space' 
 or reload it with 'r'.
 """
-
-
-# pygame : 
-#    sons
-#    touches ?
-#    Affichage ?
-
-# tkinter :
-#    touches ?
-#    Affichage ?
-
-# Pour les deux http://fsincere.free.fr/isn/python/cours_python_tkinter.php
-
-# Je commence par le son (voir si automatiquement en thread ou s'il faut 
-# l'ajouter) -> il faut l'ajouter
-# Pseudo module de son fonctionant.
-# Pour la récupération des arguments je vais utiliser docopt
-
- 
-from docopt import docopt
-
-import tkinter as tk
-from graphic import *
 
 def parse_time(time) :
     """
