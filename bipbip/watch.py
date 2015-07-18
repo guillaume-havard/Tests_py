@@ -18,7 +18,7 @@ class Watch(tk.LabelFrame):
         
         self.name = name
         self.value = tk.StringVar()
-        self.value.set("0")
+        self.value.set("0:0")
         self.value_s = tk.IntVar()
         self.value_s.set(0)
         
@@ -48,16 +48,26 @@ class Watch(tk.LabelFrame):
         """Called when the value is changed
         
         Check if the value is correct"""
-        print("coucou :", self.name, value, "-", self.value_s.get())
-        
-        if str(value).isdigit(): 
-        
-            texte = str(self.value_s.get() // 60) + ":" + \
-                    str(self.value_s.get() % 60)
-            self.value.set(texte)  
+        if value.isdigit() : 
+            if value[0] == "0" and len(value) > 1:
+                value = value[1:]
+            texte = str(int(value) // 60) + ":" + \
+                    str(int(value) % 60)
+            self.value.set(texte)
+            #self.value_s.set(int(value)) # Ne fonctionne pas
+            print(texte)
+            return True
+        elif not value:
+            self.value.set("0:0")            
             return True
         else:
             return False
+            
+            
+    def set_time(self, time_s):
+        """Set the value and value_s of the watch"""
+        
+        self.value_s.set(time_s)
 
 
 
