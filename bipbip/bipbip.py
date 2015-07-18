@@ -48,14 +48,8 @@ or reload it with 'r'.
  
 from docopt import docopt
 
-import sound
-import time
-
-manager = sound.SoundManager()
-
-arguments = docopt(help)
-print(arguments)
-print(type(arguments["<time1>"]))
+import tkinter as tk
+from graphic import *
 
 def parse_time(time) :
     """
@@ -99,21 +93,30 @@ def parse_time(time) :
             ret = int(time[:-1]) * 60
     
     return ret
-    
-# Lecture des arguments 
+
+# Lecture des arguments
+arguments = docopt(help)   
+ 
 time1 = parse_time(arguments["<time1>"])
 time2 = parse_time(arguments["<time2>"])
 time_total = parse_time(arguments["<time_total>"])
 
-print("temps pour le timer", time1, time2, time_total)
-
-"""
+# Windows
 root = tk.Tk()
 app = Application(master=root)
-app.mainloop()"""
+
+app.timer_init_1.value_s.set(time1)
+app.timer_init_2.value_s.set(time2)
+app.timer_init_tot.value_s.set(time_total)
+
+app.mainloop()
+
+
 
 import doctest
 doctest.testmod()
+
+
     
     
 
