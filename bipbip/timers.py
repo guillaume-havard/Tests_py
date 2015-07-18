@@ -22,6 +22,8 @@ class Timer:
     
     The timer can be set to stop automaticaly when a limit is reach
     Can be launched, paused ...
+    
+    TODO : Pour le moment il faut l'updater, voir ce que je veux
     """
     
     def __init__(self, limit=None):
@@ -44,7 +46,7 @@ class Timer:
             self.playing = True            
             self.time_tmp = dtime.datetime.now()
         
-    def pause(self):
+    def stop(self):
         """Pause the timer"""
         if self.playing:
             self.update()
