@@ -22,8 +22,7 @@ class Timer:
     
     The timer can be set to stop automaticaly when a limit is reach
     Can be launched, paused ...
-    
-    TODO : Pour le moment il faut l'updater, voir ce que je veux
+        
     """
     
     def __init__(self, limit=None):
@@ -35,9 +34,7 @@ class Timer:
         else:
             self.limit = None
             #raise error
-            
-        print("limit : ", limit)
-        
+                    
         self.reset()
         
     def play(self):
@@ -55,9 +52,18 @@ class Timer:
     def update(self):
         """update the timer to have the current elapsed time"""
         
-        if self.playing:
-            self.timedelta_total += dtime.datetime.now() - self.time_tmp
-            self.time_tmp = dtime.datetime.now()
+        if not self.playing:
+            return False
+            
+        self.timedelta_total += dtime.datetime.now() - self.time_tmp
+        self.time_tmp = dtime.datetime.now()
+        
+        if self.limit:
+            if self.limit <= self.timedelta_total:
+                self.reset()
+                return True
+                
+        return False
         
         # TODO : limitation avec 'limit'
         

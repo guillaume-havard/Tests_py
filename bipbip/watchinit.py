@@ -55,7 +55,6 @@ class WatchInit(tk.LabelFrame):
                     str(int(value) % 60)
             self.value.set(texte)
             #self.value_s.set(int(value)) # Ne fonctionne pas
-            print(texte)
             return True
         elif not value:
             self.value.set("0:0")            
@@ -69,9 +68,6 @@ class WatchInit(tk.LabelFrame):
         
         self.value_s.set(time_s)
 
-
-
-print("pouet")
 
 if __name__ == "__main__":
     pass

@@ -14,6 +14,7 @@ Buttons (play/pause, reset)
 import tkinter as tk
 from watchinit import *
 from watchmanager import *
+from datetime import timedelta
 
 class Application(tk.Frame):
 
@@ -72,7 +73,17 @@ class Application(tk.Frame):
             self.watches_manager.stop()
             self.ss_button["text"] = "Start"
         else:
-            self.watches_manager.start()
+            time1_s = self.timer_init_1.value_s.get()
+            time2_s = self.timer_init_2.value_s.get()
+            timetot_s = self.timer_init_tot.value_s.get()
+            
+            if time1_s == 0 or time2_s == 0:
+                time1_s = 0
+                time2_s = 0
+            
+            self.watches_manager.start(timedelta(seconds=time1_s),
+                                       timedelta(seconds=time2_s),
+                                       timedelta(seconds=timetot_s))
             self.ss_button["text"] = "Stop"
         
     def reset_timers(self):
